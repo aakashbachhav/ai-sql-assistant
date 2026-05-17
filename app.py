@@ -288,7 +288,11 @@ st.markdown("""
 @st.cache_resource
 def init_chain():
     db = SQLDatabase.from_uri("sqlite:///sales.db")
-    llm = OllamaLLM(model="codellama", temperature=0)
+    llm = OllamaLLM(
+    model="codellama",
+    temperature=0,
+    base_url="http://host.docker.internal:11434"
+)
     chain = SQLDatabaseChain.from_llm(llm=llm, db=db, verbose=False, return_direct=True)
     return chain
 

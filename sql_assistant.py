@@ -4,9 +4,10 @@ from langchain_experimental.sql import SQLDatabaseChain
 
 db = SQLDatabase.from_uri("sqlite:///sales.db")
 
-llm - OllamaLLM(
+llm = OllamaLLM(
     model = "codellama",
-    temperature = 0
+    temperature = 0,
+    base_url="http://host.docker.internal:11434"
 )
 
 db_chain = SQLDatabaseChain.from_llm(
